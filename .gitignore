@@ -1,5 +1,6 @@
 .idea/
 run/
+scripts/mujoco/
 
 ### Python template
 # Byte-compiled / optimized / DLL files

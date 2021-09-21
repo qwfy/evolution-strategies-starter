@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-exit 1
-
 set -x
 set -e
 
@@ -26,6 +24,8 @@ apt-get update
 apt-get install -y locales
 locale-gen en_US.UTF-8
 update-locale LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8
+echo 'export LC_ALL=en_US.UTF-8' >> ~/.bashrc
+echo 'export LANG=en_US.UTF-8' >> ~/.bashrc
 
 # Basic tools
 apt-get install -y python3-dev patchelf build-essential cmake git wget htop tmux vim procps

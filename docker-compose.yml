@@ -1,10 +1,13 @@
 services:
 
   es-shell:
+    container_name: es-shell
     image: openai-es:latest
     volumes:
-      - ./:/home/userk/ai/evolution-strategies-starter
+      - ./:/root/ai/evolution-strategies-starter
     entrypoint: ["/bin/sleep", "365d"]
+    # cuda is slower
+    # runtime: nvidia
 
   es-redis-master:
     container_name: es-redis-master
