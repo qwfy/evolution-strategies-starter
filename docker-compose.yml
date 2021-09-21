@@ -1,0 +1,26 @@
+services:
+
+  es-shell:
+    image: openai-es:latest
+    volumes:
+      - ./:/home/userk/ai/evolution-strategies-starter
+    entrypoint: ["/bin/sleep", "365d"]
+
+  es-redis-master:
+    container_name: es-redis-master
+    image: redis
+    volumes:
+      - ./redis_config/redis_master.conf:/etc/redis/redis.conf
+      - ./run/redis_master_data:/data
+      - ./run/redis_master_tmp:/tmp
+    ports:
+      - 6379:6379
+    entrypoint: ["redis-server", "/etc/redis/redis.conf"]
+
+  es-redis-slave:
+    image: redis
+    volumes:
+      - ./redis_config/redis_local_mirror.conf:/etc/redis/redis.conf
+      - ./run/redis_slave_data:/data
+      - ./run/redis_slave_tmp:/tmp
+    entrypoint: [ "redis-server", "/etc/redis/redis.conf" ]

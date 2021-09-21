@@ -115,7 +115,6 @@ def batched_weighted_sum(weights, vecs, batch_size):
 
 def setup(exp, single_threaded):
     import gym
-    gym.undo_logger_setup()
     from . import policies, tf_util
 
     config = Config(**exp['config'])
